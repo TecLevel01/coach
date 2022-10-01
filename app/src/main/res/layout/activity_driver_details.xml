@@ -10,9 +10,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/outline"
         android:orientation="vertical"
         android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Driver Details" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -43,16 +50,35 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAction"
-            android:onClick="runAction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="runAction"
             android:text="UPDATE" />
 
         <com.google.android.material.button.MaterialButton
-            android:onClick="addDriver"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="addDriver"
             android:text="ADD DRIVER" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/outline"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Delivery Tracking" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TRACK DRIVER" />
     </LinearLayout>
 
 

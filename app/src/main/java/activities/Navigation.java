@@ -37,29 +37,11 @@ public class Navigation extends AppCompatActivity {
 
     private void getData() {
         getMethod();
-//        snapshotMethod();
     }
 
-    private void snapshotMethod() {
-        driversRef.addSnapshotListener((value, error) -> {
-            if (error == null) {
-                if (!value.isEmpty()) {
-                    // loop to iterate each document in collection
-                    for (QueryDocumentSnapshot snapshot : value) {
-                        // map driver to object
-                        Driver driver = snapshot.toObject(Driver.class);
-                        // add uid
-                        driver.setUid(snapshot.getId());
-                        // add driver to array List
-                        drivers.add(driver);
-                    }
-                    driversAdapter.notifyDataSetChanged();
-                }
-            }
-        });
-    }
 
     private void getMethod() {
+        drivers.clear(); // clear old list
         driversRef.get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -72,7 +54,9 @@ public class Navigation extends AppCompatActivity {
                             // add driver to array List
                             drivers.add(driver);
                         }
-                        driversAdapter.notifyDataSetChanged();
+
+                        driversAdapter = new DriversAdapter(drivers, this);
+                        recView.setAdapter(driversAdapter);
                     }
                     // hide refresh
                     swipeRefresh.setRefreshing(false);
@@ -87,10 +71,8 @@ public class Navigation extends AppCompatActivity {
     private void mInit() {
         recView = findViewById(R.id.recView);
         drivers = new ArrayList<>();
-        driversAdapter = new DriversAdapter(drivers, this);
-        recView.setAdapter(driversAdapter);
-
         swipeRefresh = findViewById(R.id.swipeRefresh);
+        swipeRefresh.setRefreshing(true);
         swipeRefresh.setOnRefreshListener(() -> {
             getMethod();
         });
