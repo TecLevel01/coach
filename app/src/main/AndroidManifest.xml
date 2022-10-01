@@ -14,10 +14,17 @@
         android:theme="@style/Theme.Bdm"
         tools:targetApi="31">
         <activity
-            android:name=".Login"
-            android:exported="false" />
+            android:name="activities.DriverDetails"
+            android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name="activities.Navigation"
+            android:exported="true" />
+        <activity
+            android:name="activities.Login"
+            android:exported="false"
+            android:theme="@style/Theme.Bdm.NoActionBar" />
+        <activity
+            android:name="activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

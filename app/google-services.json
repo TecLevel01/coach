@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "198739268650",
+    "project_id": "bidco-ug",
+    "storage_bucket": "bidco-ug.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198739268650:android:f1d5f884117671110a5f53",
+        "android_client_info": {
+          "package_name": "com.example.bdm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198739268650-c4fooq6ehcij9lr5u7586165o34fops4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhSak7uOc66Odaf5Bhulb0Rvp-KKrvxKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198739268650-c4fooq6ehcij9lr5u7586165o34fops4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

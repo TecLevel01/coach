@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">bdm</string>
+    <string name="app_name">Bidco Driver Monitor</string>
     <string name="bdm">BDM</string>
     <string name="bidco_driver_monitor">Bidco Driver Monitor</string>
     <string name="username">Username</string>
