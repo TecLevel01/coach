@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Lubunga/AndroidStudioProjects/bdm/app/src/main/res/drawable/rond.xml" value="0.137" />
+        <entry key="..\:/Users/Lubunga/AndroidStudioProjects/bdm/app/src/main/res/layout/activity_driver_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lubunga/AndroidStudioProjects/bdm/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lubunga/AndroidStudioProjects/bdm/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Lubunga/AndroidStudioProjects/bdm/app/src/main/res/layout/activity_navigation.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Lubunga/AndroidStudioProjects/bdm/app/src/main/res/layout/driver_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/reypa/AndroidStudioProjects/SchoolBiz/Bidco/app/src/main/res/drawable-v24/outline.xml" value="0.172" />
         <entry key="..\:/Users/reypa/AndroidStudioProjects/SchoolBiz/Bidco/app/src/main/res/drawable/aarow_right.xml" value="0.172" />
         <entry key="..\:/Users/reypa/AndroidStudioProjects/SchoolBiz/Bidco/app/src/main/res/drawable/rond.xml" value="0.172" />

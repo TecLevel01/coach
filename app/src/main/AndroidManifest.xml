@@ -21,7 +21,7 @@
             android:exported="true" />
         <activity
             android:name="activities.Login"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/Theme.Bdm.NoActionBar" />
         <activity
             android:name="activities.MainActivity"
