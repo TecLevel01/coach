@@ -3,19 +3,29 @@ package models;
 import java.io.Serializable;
 
 public class Driver implements Serializable {
-    String uname;
+    String name;
     String phone;
+    String email;
+    String password;
     String uid;
 
     public Driver() {
     }
 
-    public String getUname() {
-        return uname;
+    public String getName() {
+        return name;
     }
 
     public String getPhone() {
         return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getUid() {

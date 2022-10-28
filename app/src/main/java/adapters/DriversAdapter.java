@@ -6,20 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.bdm.R;
-
 import java.util.ArrayList;
-
 import activities.DriverDetails;
 import models.Driver;
 
 public class DriversAdapter extends RecyclerView.Adapter<ViewHolder> {
-    private ArrayList<Driver> drivers;
+    private final ArrayList<Driver> drivers;
     private Context context;
+
 
     public DriversAdapter(ArrayList<Driver> drivers, Context context) {
         this.drivers = drivers;
@@ -57,12 +54,13 @@ class ViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setData(Driver driver) {
-        tvUname.setText(driver.getUname());
-
+        tvUname.setText(driver.getName());
         itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DriverDetails.class);
             intent.putExtra("driver", driver);
             context.startActivity(intent);
         });
+
     }
+
 }

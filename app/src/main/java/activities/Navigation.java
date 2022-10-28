@@ -1,18 +1,17 @@
 package activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.example.bdm.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-
 import java.util.ArrayList;
-
 import adapters.DriversAdapter;
 import models.Driver;
 
@@ -24,15 +23,22 @@ public class Navigation extends AppCompatActivity {
     private DriversAdapter driversAdapter;
     private CollectionReference driversRef;
     private SwipeRefreshLayout swipeRefresh;
+    FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
-
+        fab = findViewById(R.id.fab);
         mInit();
         initFirestore();
         getData();
+
+        fab.setOnClickListener(view -> {
+            startActivity(new Intent(this, addDriver.class));
+        });
+
     }
 
     private void getData() {
@@ -73,9 +79,7 @@ public class Navigation extends AppCompatActivity {
         drivers = new ArrayList<>();
         swipeRefresh = findViewById(R.id.swipeRefresh);
         swipeRefresh.setRefreshing(true);
-        swipeRefresh.setOnRefreshListener(() -> {
-            getMethod();
-        });
+        swipeRefresh.setOnRefreshListener(this::getMethod);
 
     }
 }

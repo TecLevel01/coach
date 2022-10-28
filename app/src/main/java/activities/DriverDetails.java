@@ -1,48 +1,72 @@
 package activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.bdm.R;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import models.Driver;
 
 public class DriverDetails extends AppCompatActivity {
 
-    private EditText etPhone, etUname;
-    private Driver driver;
+    private EditText name, etPhone, etEmail, etPassword;
+    public Driver driver;
     private FirebaseFirestore db;
     private HashMap<String, Object> map;
+    TextView deleteBtn;
 
+
+    //@SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_details);
+        deleteBtn = findViewById(R.id.deleteDriver);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Details");
 
         mInit();
         getData();
 
+        //Delete Driver Details
+        deleteBtn.setOnClickListener(view -> {
+            getFields();
+            DocumentReference driverDoc = db.collection("drivers")
+                    .document(driver.getUid());
+
+            driverDoc.delete().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
+
     }
 
     private void getFields() {
-        String phone = etPhone.getText().toString().trim(),
-                uname = etUname.getText().toString().trim();
+        String uname = name.getText().toString().trim(),
+                phone = etPhone.getText().toString().trim(),
+                dEmail = etEmail.getText().toString().trim(),
+                dPw = etPassword.getText().toString().trim();
         map = new HashMap<>();
+        map.put("name", uname);
         map.put("phone", phone);
-        map.put("uname", uname);
+        map.put("email", dEmail);
+        map.put("password", dPw);
     }
 
     private void updateData() {
@@ -60,8 +84,10 @@ public class DriverDetails extends AppCompatActivity {
     }
 
     private void mInit() {
-        etUname = findViewById(R.id.etUname);
+        name = findViewById(R.id.etUname);
         etPhone = findViewById(R.id.etPhone);
+        etEmail = findViewById(R.id.dEmail);
+        etPassword = findViewById(R.id.dPw);
         db = FirebaseFirestore.getInstance();
     }
 
@@ -72,8 +98,10 @@ public class DriverDetails extends AppCompatActivity {
             driver = (Driver) bundle.getSerializable("driver");
 
             // set data
-            etUname.setText(driver.getUname());
+            name.setText(driver.getName());
             etPhone.setText(driver.getPhone());
+            etEmail.setText(driver.getEmail());
+            etPassword.setText(driver.getPassword());
         }
     }
 
@@ -89,13 +117,7 @@ public class DriverDetails extends AppCompatActivity {
         updateData();
     }
 
-    public void addDriver(View view) {
-        getFields();
-        db.collection("drivers").add(map).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                finish();
-                Toast.makeText(this, "Driver Added", Toast.LENGTH_SHORT).show();
-            }
-        });
+    public void tDetails(View view) {
+        startActivity(new Intent(this, trips.class));
     }
 }

@@ -8,4 +8,10 @@
     <string name="full_name">Full Name</string>
     <string name="phone_number">Phone Number</string>
     <string name="password">Password</string>
+    <string name="update">UPDATE</string>
+    <string name="add_driver">ADD DRIVER</string>
+    <string name="track_driver">TRACK DRIVER</string>
+    <string name="title_activity_track_driver">TrackDriver</string>
+    <string name="title_activity_tracker_driver">TrackerDriver</string>
+    <string name="sign_in_to_continue">Sign In To Continue</string>
 </resources>

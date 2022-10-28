@@ -3,32 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    tools:context="activities.trips">
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
+        android:id="@+id/myRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/mTrips"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/driver_item" />
-
-
+            tools:listitem="@layout/trips_details"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="35dp"
-        android:layout_marginEnd="25dp"
-        android:clickable="true"
-        android:focusable="true"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:contentDescription="TODO" />
 </FrameLayout>
