@@ -1,10 +1,20 @@
 package models;
 
-public class initTrip {
-    String item, nPlate;
-public initTrip(){
+import java.util.Date;
 
-}
+public class initTrip {
+    Date timestamp;
+    String item, nPlate;
+public initTrip(){}
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public String getItem() {
         return item;
     }

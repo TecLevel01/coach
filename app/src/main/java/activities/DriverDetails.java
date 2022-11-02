@@ -27,7 +27,6 @@ public class DriverDetails extends AppCompatActivity {
     TextView deleteBtn;
 
 
-    //@SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +117,8 @@ public class DriverDetails extends AppCompatActivity {
     }
 
     public void tDetails(View view) {
-        startActivity(new Intent(this, trips.class));
+        Intent intent = new Intent(this, trips.class);
+        intent.putExtra("dId", driver.getUid());
+        startActivity(intent);
     }
 }
