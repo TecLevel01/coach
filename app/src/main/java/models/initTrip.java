@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class initTrip {
     Date timestamp;
-    String item, nPlate;
+    String destination;
 public initTrip(){}
 
     public Date getTimestamp() {
@@ -15,19 +15,11 @@ public initTrip(){}
         this.timestamp = timestamp;
     }
 
-    public String getItem() {
-        return item;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setItem(String item) {
-        this.item = item;
-    }
-
-    public String getnPlate() {
-        return nPlate;
-    }
-
-    public void setnPlate(String nPlate) {
-        this.nPlate = nPlate;
+    public void settDestination(String Destination) {
+        this.destination = Destination;
     }
 }

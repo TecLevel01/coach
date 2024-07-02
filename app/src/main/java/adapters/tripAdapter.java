@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.bdm.R;
+import com.oli.coach.R;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,8 +32,7 @@ public class tripAdapter extends RecyclerView.Adapter<tripAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull tripAdapter.MyViewHolder holder, int position) {
         initTrip initTrip = initTripArrayList.get(position);
-        holder.itemName.setText(initTrip.getItem());
-        holder.nPlate.setText(initTrip.getnPlate());
+        holder.tDestination.setText(initTrip.getDestination());
         holder.time.setText(dateFormat(initTrip.getTimestamp()));
 
     }
@@ -43,11 +42,10 @@ public class tripAdapter extends RecyclerView.Adapter<tripAdapter.MyViewHolder> 
         return initTripArrayList.size();
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView itemName, nPlate, time;
+        TextView tDestination, time;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemName = itemView.findViewById(R.id.tvItem);
-            nPlate = itemView.findViewById(R.id.tvPlate);
+            tDestination = itemView.findViewById(R.id.tvPlate);
             time = itemView.findViewById(R.id.tvTime);
         }
     }

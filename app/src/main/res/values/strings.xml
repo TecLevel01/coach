@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Bidco Driver Monitor</string>
-    <string name="bdm">BDM</string>
-    <string name="bidco_driver_monitor">Bidco Driver Monitor</string>
+    <string name="app_name">Global Coaches</string>
+    <string name="bdm">Global Coaches</string>
+    <string name="bidco_driver_monitor">Global Coaches</string>
     <string name="username">Username</string>
     <string name="sign_up_to_start">Sign Up To Start</string>
     <string name="email_address">Email Address</string>
@@ -14,4 +14,5 @@
     <string name="title_activity_track_driver">TrackDriver</string>
     <string name="title_activity_tracker_driver">TrackerDriver</string>
     <string name="sign_in_to_continue">Sign In To Continue</string>
+    <string name="todo">TODO</string>
 </resources>

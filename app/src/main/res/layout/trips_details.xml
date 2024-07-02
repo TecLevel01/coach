@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="1dp"
     android:foreground="?selectableItemBackgroundBorderless"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="5dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,18 +19,10 @@
             android:layout_weight="1"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/tvItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bdm"
-                android:textColor="?colorPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-            <TextView
                 android:id="@+id/tvPlate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="bdm"
+                android:text="coach"
                 android:textSize="13sp" />
         </LinearLayout>
         <TextView

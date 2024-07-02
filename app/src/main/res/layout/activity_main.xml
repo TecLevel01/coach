@@ -1,183 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context="activities.MainActivity">
 
-    <TextView
-        android:id="@+id/logo"
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/faster_one"
-        android:letterSpacing="0.3"
-        android:text="@string/bdm"
-        android:textColor="@color/black"
-        android:textSize="45sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tittle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-2dp"
-        android:fontFamily="@font/akaya_telivigala"
-        android:letterSpacing="0.2"
-        android:text="@string/bidco_driver_monitor"
-        android:textColor="#facb02"
-        android:textSize="25sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.543"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        <include layout="@layout/title"/>
 
+        <TextView
+            android:id="@+id/signTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_gravity="start"
+            android:text="Sign Un To Start"
+            android:textColor="#555"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/signTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:text="@string/sign_up_to_start"
-        android:textColor="#555"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:autofillHints="emailAddress"
+            android:drawableStart="@drawable/email"
+            android:drawablePadding="20sp"
+            android:drawableTint="#142c41"
+            android:hint="email address"
+            android:inputType="textEmailAddress"
+            android:textColor="#142c41"
+            android:textColorHint="#c5c5c5"
+            android:textSize="17sp"
+            android:textStyle="bold|italic" />
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="348dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:autofillHints="emailAddress"
-        android:drawableStart="@drawable/email"
-        android:drawablePadding="20sp"
-        android:drawableTint="#facb02"
-        android:ems="10"
-        android:hint="@string/email_address"
-        android:inputType="textEmailAddress"
-        android:textColor="#fff"
-        android:textColorHint="#c5c5c5"
-        android:textSize="17sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone" />
-
-    <EditText
-        android:id="@+id/fullname"
-        android:layout_width="340dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
-        android:autofillHints="name"
-        android:drawableStart="@drawable/people"
-        android:drawablePadding="20sp"
-        android:drawableTint="#facb02"
-        android:ems="10"
-        android:hint="@string/full_name"
-        android:inputType="textPersonName"
-        android:textColor="#fff"
-        android:textColorHint="#c5c5c5"
-        android:textSize="17sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.349"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signTxt" />
+        <EditText
+            android:id="@+id/fullname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:drawableStart="@drawable/people"
+            android:drawablePadding="20sp"
+            android:drawableTint="#142c41"
+            android:ems="10"
+            android:hint="full name"
+            android:inputType="textPersonName"
+            android:textColor="#142c41"
+            android:textColorHint="#c5c5c5"
+            android:textSize="17sp"
+            android:textStyle="bold|italic" />
 
 
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="343dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="20dp"
-        android:drawableStart="@drawable/android_phone"
-        android:drawablePadding="20sp"
-        android:drawableTint="#facb02"
-        android:ems="10"
-        android:hint="@string/phone_number"
-        android:inputType="phone"
-        android:textColor="#fff"
-        android:textColorHint="#c5c5c5"
-        android:textSize="17sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.349"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullname" />
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:drawableStart="@drawable/android_phone"
+            android:drawablePadding="20sp"
+            android:drawableTint="#142c41"
+            android:ems="10"
+            android:hint="phone"
+            android:inputType="phone"
+            android:textColor="#142c41"
+            android:textColorHint="#c5c5c5"
+            android:textSize="17sp"
+            android:textStyle="bold|italic" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="348dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="16dp"
-        android:autofillHints="password"
-        android:drawableStart="@drawable/password"
-        android:drawablePadding="20sp"
-        android:drawableTint="#facb02"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:textColor="#fff"
-        android:textColorHint="#c5c5c5"
-        android:textSize="17sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="20sp"
+            app:passwordToggleEnabled="true"
+            android:drawableTint="#142c41"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:textColor="#142c41"
+            android:textColorHint="#c5c5c5"
+            android:textSize="17sp"
+            android:textStyle="bold|italic" />
 
-    <Button
-        android:id="@+id/signUpBtn"
-        android:layout_width="362dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#facb02"
-        android:text="Sign Up"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.408"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        <Button
+            android:id="@+id/signUpBtn"
+            android:layout_width="320dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#142c41"
+            android:text="Sign Up"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/signInTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Already Have an Account? Sign In"
-        android:textSize="20sp"
-        android:textColor="#555"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpBtn"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="goLogin"
+            android:text="Already Have an Account? Sign In"
+            android:textColor="#555"
+            android:textStyle="bold" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.515"
-        tools:ignore="MissingConstraints" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="-250dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -8,8 +8,8 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.bdm"
-        minSdk 21
+        applicationId "com.oli.coach"
+        minSdk 24
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -30,11 +30,12 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'com.oli.coach'
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
@@ -42,8 +43,21 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation 'com.google.firebase:firebase-auth:21.1.0'
     implementation 'com.google.firebase:firebase-firestore'
-    implementation 'com.google.firebase:firebase-firestore:24.4.0'
+    implementation 'com.google.firebase:firebase-firestore:24.4.2'
+    implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
 
     //Google Services
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+
+    //Biometric
+    implementation 'androidx.biometric:biometric:1.1.0'
+
+    //QR code
+    implementation 'com.google.zxing:core:3.4.0'
+    implementation 'com.journeyapps:zxing-android-embedded:4.2.0'
+
+    //Messaging or Notification
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation 'com.google.firebase:firebase-messaging:23.3.1'
 }

@@ -9,12 +9,47 @@
     tools:context="activities.DriverDetails">
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="47dp"
+            android:layout_height="36dp"
+            android:src="@drawable/chat"
+            android:onClick="tChat"
+            android:layout_marginEnd="10dp"
+            app:tint="@color/primary"
+            tools:ignore="UsingOnClickInXml" />
+
+        <ImageView
+            android:layout_width="47dp"
+            android:layout_height="36dp"
+            android:src="@drawable/book"
+            android:onClick="tDetails"
+            android:layout_marginEnd="10dp"
+            app:tint="@color/primary"
+            tools:ignore="UsingOnClickInXml" />
+
+        <ImageView
+            android:id="@+id/qrCode"
+            android:layout_width="47dp"
+            android:layout_height="36dp"
+            android:src="@drawable/qr_code"
+            android:onClick="QR"
+            app:tint="@color/primary"
+            tools:ignore="RtlHardcoded" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:background="@drawable/outline"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:padding="10sp"
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,8 +95,35 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/dEmail"
                 android:layout_width="match_parent"
+                android:editable="false"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Car type">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etModel"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Car number plate">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPlate"
+                android:inputType="textCapCharacters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -100,20 +162,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Delivery Tracking" />
+            android:text="Driver Tracking" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/trackBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="trackBtn"
             android:text="@string/track_driver" />
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Trip Details"
-            android:onClick="tDetails"
-            tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
 
     <TextView
@@ -123,10 +179,6 @@
         android:layout_marginTop="15sp"
         android:layout_marginBottom="5dp"
         android:drawableLeft="@drawable/delete"
-        android:drawableTint="#facb02"
         android:text="Delete Driver"
-        android:textColor="#facb02"
         android:textSize="20sp" />
-
-
 </LinearLayout>

@@ -6,10 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.bdm.R;
+
+import com.oli.coach.R;
+
 import java.util.ArrayList;
+
 import activities.DriverDetails;
 import models.Driver;
 
@@ -60,7 +64,7 @@ class ViewHolder extends RecyclerView.ViewHolder {
             intent.putExtra("driver", driver);
             context.startActivity(intent);
         });
-
     }
+
 
 }

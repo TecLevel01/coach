@@ -1,16 +1,18 @@
 package activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
-import com.example.bdm.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.oli.coach.R;
 
 import java.util.ArrayList;
 
@@ -18,21 +20,26 @@ import adapters.tripAdapter;
 import models.initTrip;
 
 public class trips extends AppCompatActivity {
-    ArrayList<initTrip> initTripArrayList = new ArrayList<initTrip>();
+    ArrayList<initTrip> initTripArrayList = new ArrayList<>();
     tripAdapter myTripAdapter;
     FirebaseFirestore mDb;
     ProgressDialog progressDialog;
     private String dId;
     private RecyclerView tripItems;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trips);
 
+        swipeRefreshLayout = findViewById(R.id.myRefresh);
+        swipeRefreshLayout.setRefreshing(true);
+        swipeRefreshLayout.setOnRefreshListener(this::getData);
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("get drivers trips");
+        progressDialog.setMessage("tracking history loading...");
         progressDialog.show();
 
         mDb = FirebaseFirestore.getInstance();
@@ -57,7 +64,7 @@ public class trips extends AppCompatActivity {
 
 
     private void getData() {
-
+        initTripArrayList.clear();
         mDb.collection("history").document(dId).collection("history")
                 .orderBy("timestamp", Query.Direction.DESCENDING)
                 .addSnapshotListener((value, error) -> {
@@ -75,7 +82,11 @@ public class trips extends AppCompatActivity {
                     myTripAdapter = new tripAdapter(trips.this, initTripArrayList);
                     tripItems.setAdapter(myTripAdapter);
                     progressDialog.dismiss();
+                    swipeRefreshLayout.setRefreshing(false);
                 });
     }
 
+    public void backBtn(View view) {
+        onBackPressed();
+    }
 }

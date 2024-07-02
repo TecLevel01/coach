@@ -1,5 +1,5 @@
 package activities;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -7,20 +7,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
-import com.example.bdm.R;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.oli.coach.R;
+
+import java.util.Objects;
 
 import models.myUsers;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     EditText fullName, phone, email, password;
     Button singUP;
     ProgressBar myProBar;
-    TextView signInTxt;
     private FirebaseAuth myAuth;
 
     @Override
@@ -34,8 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         password = findViewById(R.id.password);
         singUP = findViewById(R.id.signUpBtn);
         myProBar = findViewById(R.id.progressBar);
-        signInTxt = findViewById(R.id.signInTxt);
-        signInTxt.setOnClickListener(this);
         myAuth = FirebaseAuth.getInstance();
 
         singUP.setOnClickListener(view -> {
@@ -78,9 +79,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             myProBar.setVisibility(View.VISIBLE);
             myAuth.createUserWithEmailAndPassword(myEmail, myPw).addOnCompleteListener(this, task -> {
                 if (task.isSuccessful()){
-                    myUsers myuser = new myUsers(myFullName, myPhone, myEmail, myPw);
-                    String Uid = task.getResult().getUser().getUid();
-                    FirebaseFirestore.getInstance().collection("Admin")
+                    String Uid = Objects.requireNonNull(task.getResult().getUser()).getUid();
+                    myUsers myuser = new myUsers(myFullName, myPhone, myEmail, Uid, myPw);
+                    FirebaseFirestore.getInstance().collection("admin")
                             .document(Uid).set(myuser).addOnCompleteListener(this, task1 -> {
                                 if (task1.isSuccessful()) {
                                     Toast.makeText(this, "Admin Signed Up", Toast.LENGTH_SHORT).show();
@@ -99,10 +100,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    @Override
-    public void onClick(View view) {
-        if (view.getId() == R.id.signInTxt) {
-            startActivity(new Intent(this, Login.class));
-        }
+
+
+    public void goLogin(View view) {
+        startActivity(new Intent(this, Login.class));
+        finish();
     }
 }

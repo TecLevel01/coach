@@ -1,25 +1,25 @@
 package activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.bdm.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.oli.coach.R;
 
 import models.myDriver;
 
-public class addDriver extends AppCompatActivity implements View.OnClickListener {
-    EditText etDname, etDphone, etDemail, etDpw;
+public class addDriver extends AppCompatActivity {
+    EditText etDname, etDphone, etDemail, etDpw, etModel, etPlate;
     Button addDriver;
     private FirebaseAuth myAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ public class addDriver extends AppCompatActivity implements View.OnClickListener
         etDphone = findViewById(R.id.etDphone);
         etDemail = findViewById(R.id.etDemail);
         etDpw = findViewById(R.id.etDpw);
+        etModel = findViewById(R.id.etModel);
+        etPlate = findViewById(R.id.etPlate);
         addDriver = findViewById(R.id.addDriver);
         myAuth = FirebaseAuth.getInstance();
 
@@ -37,6 +39,8 @@ public class addDriver extends AppCompatActivity implements View.OnClickListener
             String name = etDname.getText().toString().trim(),
                     phone = etDphone.getText().toString().trim(),
                     email = etDemail.getText().toString().trim(),
+                    model = etModel.getText().toString().trim(),
+                    plate = etPlate.getText().toString().trim(),
                     password = etDpw.getText().toString().trim();
 
             if (name.isEmpty()) {
@@ -47,6 +51,16 @@ public class addDriver extends AppCompatActivity implements View.OnClickListener
             if (phone.isEmpty()) {
                 etDphone.setError("phone required");
                 etDphone.requestFocus();
+                return;
+            }
+            if (model.isEmpty()) {
+                etModel.setError("phone required");
+                etModel.requestFocus();
+                return;
+            }
+            if (plate.isEmpty()) {
+                etPlate.setError("phone required");
+                etPlate.requestFocus();
                 return;
             }
             if (email.isEmpty()) {
@@ -71,15 +85,16 @@ public class addDriver extends AppCompatActivity implements View.OnClickListener
             }
             myAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
                 if (task.isSuccessful()) {
-                    myDriver myDriver = new myDriver(name, phone, email, password);
-                    FirebaseFirestore.getInstance().collection("drivers").document(task.getResult().getUser()
-                            .getUid()).set(myDriver).addOnCompleteListener(this, task1 -> {
-                        if (task1.isSuccessful()) {
-                            Toast.makeText(this, "driver added", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(this, "something wrong", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    String Uid = task.getResult().getUser().getUid();
+                    myDriver myDriver = new myDriver(name, phone, email, model, plate, password, Uid);
+                    FirebaseFirestore.getInstance().collection("drivers").document(Uid).set(myDriver)
+                            .addOnCompleteListener(this, task1 -> {
+                                if (task1.isSuccessful()) {
+                                    Toast.makeText(this, "driver added", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(this, "something wrong", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                     Toast.makeText(this, "driver added", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(this, Navigation.class));
                 } else {
@@ -92,8 +107,5 @@ public class addDriver extends AppCompatActivity implements View.OnClickListener
         });
     }
 
-    @Override
-    public void onClick(View view) {
 
-    }
 }
